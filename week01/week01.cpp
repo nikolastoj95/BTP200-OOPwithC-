@@ -10,6 +10,16 @@
 // Function overloading
 
 // everything starts here main()
+
+/*
+Object-Oriented Programming
+Object
+Encapsulation
+Abstraction
+Data Hiding
+Inheritance
+Polymorphism
+*/
 int main() {
     std::cout << "Hello Nikola"<< std::endl;
     return 0;
