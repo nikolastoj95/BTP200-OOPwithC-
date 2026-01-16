@@ -33,7 +33,7 @@ using namespace std;
 
 namespace seneca{
     void read (char* name){
-        cout << "Name\n ";
+        cout << "Name\n> ";
         cin >> name;
     };
     bool read (PhoneRec& rec, FILE* fptr){
