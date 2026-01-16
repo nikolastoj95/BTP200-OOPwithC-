@@ -84,9 +84,6 @@ namespace seneca{
         }
     }
 
-    // void sort (PhoneRec* recPtrs[], size_t size, bool byLastName){
-
-    // }
      void sort(PhoneRec* recPtrs[], size_t size, bool byLastName) {
       for (size_t i = 0; i < size - 1; i++) {
          for (size_t j = i + 1; j < size; j++) {
