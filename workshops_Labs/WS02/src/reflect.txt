@@ -6,7 +6,7 @@ Reflection
 3.void append(int*& data, int size, const int appendedData[], int dataSize);
 Reflect: Why int*& is needed here and not int*?
 
-The reason why int*& (reference to the pointer) is needed and not just a pointer int* because in append() we are changing the caller's pointer to point to a new bigger array, we need to change both. In append we are creating new memory temp, deleteing old memory, and assigning temp to the old one so both the pointers need to be updated. Just having a pointer the copy would change only, and the caller pointer would still point to a deleted memory.  This way it updates both pointes.
+The reason why int*& (reference to the pointer) is needed and not just a pointer int* because in append() we are changing the caller's pointer to point to a new bigger array, we need to change both. In append we are creating new memory temp, deleteing old memory, and assigning temp to the old one so both the pointers need to be updated. Just having a pointer the copy would change only, and the caller pointer would still point to a deleted memory.  This way it updates both pointers.
 
 4.void freemem(Samples*& s);
 Reflect: Why Sample*& is needed here and not Sample*?
