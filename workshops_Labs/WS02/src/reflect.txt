@@ -1,0 +1,23 @@
+Nikola Stojanovic 027369127
+Workshop 02
+BTP200 NAA
+Reflection
+
+3.void append(int*& data, int size, const int appendedData[], int dataSize);
+Reflect: Why int*& is needed here and not int*?
+
+The reason why int*& (reference to the pointer) is needed and not just a pointer int* because in append() we are changing the caller's pointer to point to a new bigger array, we need to change both. In append we are creating new memory temp, deleteing old memory, and assigning temp to the old one so both the pointers need to be updated. Just having a pointer the copy would change only, and the caller pointer would still point to a deleted memory.  This way it updates both pointes.
+
+4.void freemem(Samples*& s);
+Reflect: Why Sample*& is needed here and not Sample*?
+
+Same reason as above, here in freemem at the end of reading sensor data, you are setting the pointer s back to nullptr. However using only Samples s* it would only set back to nullptr on the copy, and callers pointer would still be dangling to the deleted one. So to prevent this we need to use Sample*& s (reference to the pointer) which makes the callers pointer also set to nullptr.  This prevents accidental use. 
+
+
+
+While finshing this workshop and created the dma modules for sensor data, I learned how dynamic memory allocation works in C++ and why it is important to manage memory carefully. I practiced creating a struct that contains pointers (char* for title and int* for sensor reading data) and writing functions that allocate, copy, append, and free memory.  
+
+One thing I learned from this workshop was when a function needs to change a pointer owned by the caller, you must pass the pointer by reference (int*& in append).  If not, the function only changes a local copy and the callers pointer would still point to the old or deleted memory. Another thing learned was why void freeman uses Samples*&, it is so it can set the callers pointer to nullptr after deleting, preventing dangling pointers. 
+
+The challenging part of this workshop was keeping track of when to use '.' versus '->', and remembering to match new[] with delete[]. Also remembering to make sure function prototypes in the header exactly matched the definations in the cpp file, as it can cause compile errors. 
+
