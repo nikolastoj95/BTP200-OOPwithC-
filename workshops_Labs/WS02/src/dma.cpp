@@ -11,10 +11,9 @@ Subject: BTP200NAA
 Revision History
 ------- --------- ------------------------------------------
 Version Date      Reason
-V0.7    2025/?/?  Completing whatever
-V0.8    2025/?/?  Debugged DMA
-V0.9    2025/?/?  Asked prof for help for XYZ
-V1.0    2025/?/?  Ready for submission
+V0.7    2025/01/22 added functions, created them to load in dynamic array
+V0.8    2025/01/23 Ran tests, debugged, Works
+V1.0    2025/01/23 Ready for submission
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my work for function whatever.
