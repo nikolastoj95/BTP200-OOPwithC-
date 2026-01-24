@@ -22,7 +22,6 @@ that my professor provided to complete my work for function whatever.
 
 #include "dma.h"
 #include "cstr.h"
-#include <iostream>
 
 
 namespace seneca {
