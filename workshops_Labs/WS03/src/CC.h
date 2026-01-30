@@ -14,7 +14,7 @@ Version Date      Reason
 V0.6    2025/01/28 Opened File, read instructions two private methods were they display with 5 args, and print number
 V0.7    2025/01/29 in CC.h added the private class attrubutes (5) and the one private method vaildate to check if the (5) inputs are right
 V0.8    2025/01/30 added the public methods, constructor(args/non args), deconstructor, set()/set(with args)
-V0.9    2025/01/30 Ran tests, debugged, Works
+V0.9    2025/01/30 Ran tests, debugged, Works, added citation on the top
 V1.0    2025/01/30 Ready for submission
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
