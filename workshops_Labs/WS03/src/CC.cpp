@@ -40,7 +40,7 @@ namespace seneca {
    }
 
    void CC::set() {
-      deallocate(); // cc name dynamic char[]
+      deallocate(); // cc name dynamic char[], sets name to nullptr
       m_ccv=0;
       m_expMonth =0;
       m_expYear =0;
@@ -117,7 +117,7 @@ namespace seneca {
    }
 
    void CC::set(const char* cc_name, unsigned long long cc_no, short cvv, short expMon, short expYear) {
-      set(); // safe empty state first
+      set(); // set to  safe empty state first
 
       if (validate(cc_name,cc_no, cvv, expMon, expYear )){
          // if true
@@ -138,6 +138,7 @@ namespace seneca {
 
       } else {
          //if not in safe empty state display the object
+         // using display (private method)
          display(m_name, m_ccNumber, m_expYear, m_expMonth, m_ccv);
       }
       
