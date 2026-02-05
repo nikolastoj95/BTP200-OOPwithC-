@@ -57,7 +57,7 @@ int main (void){
 
     Country ct;
     // invokeing a member function (set, get)
-    ct.set("Serbia", 32546);
+    ct.set("Serbia", 32546); // public access function 
 
     // strcpy(ct1.mName, "Serbia");
 
