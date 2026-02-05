@@ -26,6 +26,9 @@ Object's State
 Empty State
 Use of Empty State
 */
+/*
+State of Mind: 
+*/
 
 
 //everything in struct has public access
@@ -86,8 +89,6 @@ int main (void){
     ct.getName() /*public*/ << endl << "Country Area: " 
     << ct.getArea() /*public*/ << endl; 
 
-    // public fields // struct feilds 
-    //cout << ct.mName << " "<< ct.mArea <<endl; 
     
     return 0;
 };
