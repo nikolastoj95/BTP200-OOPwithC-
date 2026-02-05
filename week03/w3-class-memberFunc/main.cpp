@@ -16,11 +16,16 @@ Privacy in struct and class
 Accessing private data
 */
 
-struct Country {
+//encapsulation -to minimuze public access to the dclass members, attributes, fields
+//      - make some fields, members private
+
+//everything in struct has public access
+class Country { 
+ // makeing it private all declarations after private:
     char mName[32];
     unsigned int mArea;
     //some comment to test
-
+public:
     // create function to access data or attributes to write or to re
     // 1.  (write data in to it)  setter, or mutator , or modifer
     /*inline*/ void set(const char* name, unsigned area); //treated as inline function  // to recieve name and area
@@ -62,12 +67,18 @@ int main (void){
 
     Country ct;
     // invokeing a member function (set, get)
-    ct.set("Serbia", 32546); // public access function 
+    ct.set("Serbia", 32546); // public access function  // public
 
     // strcpy(ct1.mName, "Serbia");
 
     // ct1.mArea = 34543; // setting data
-    ct.display();
+    ct.display(); // public
+    cout << "Country Name: " << 
+    ct.getName() /*public*/ << endl << "Country Area: " 
+    << ct.getArea() /*public*/ << endl; 
+
+    // public fields // struct feilds 
+    //cout << ct.mName << " "<< ct.mArea <<endl; 
     
     return 0;
 };
