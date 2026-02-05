@@ -44,6 +44,11 @@ struct Country {
         // creation or destruction of object
     // Purpose is to -- be created properly and distroyed properly 
 
+    // 3. query function display 
+    void display() const {
+        cout << "Country Name: " << mName << endl << "Country Area: " << mArea << endl;
+    }
+
 };
 
 // struct name :: function name (){}
@@ -62,7 +67,7 @@ int main (void){
     // strcpy(ct1.mName, "Serbia");
 
     // ct1.mArea = 34543; // setting data
-
-    cout << "Country Name: " << ct.getName() << endl << "Country Area: " << ct.getArea() << endl;
+    ct.display();
+    
     return 0;
 };
