@@ -167,7 +167,7 @@ namespace seneca {
          // Attempt to extract an integer from the input stream
          if (!(is >> val)) {
             is.clear();
-            is.ignore(numeric_limits<streamsize>::max(), '\n');
+            is.ignore(numeric_limits<streamsize>::max(), '\n'); // Flush entire line
             cout << "Invalid integer, try again.\n> ";
             continue; //Retry
          }
