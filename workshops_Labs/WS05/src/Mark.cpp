@@ -121,8 +121,8 @@ namespace seneca {
 
    // student helper function implementations go here
    ostream& Mark::display (ostream& os) const {
-      ios oldState(nullptr);
-      oldState.copyfmt(os);
+      // ios oldState(nullptr);
+      // oldState.copyfmt(os);
 
       if (!isValid()) {
          if (m_type == GRADE) {
@@ -130,7 +130,7 @@ namespace seneca {
          }  else {
             os << "***";
          }
-         os.copyfmt(oldState);
+         // os.copyfmt(oldState);
          return os;
 
       }
@@ -143,7 +143,7 @@ namespace seneca {
          os << setfill (' ') << setw(3) << left << (const char*)(*this);
       }
 
-      os.copyfmt(oldState);
+      // os.copyfmt(oldState);
       return os;
    }
 
@@ -166,7 +166,13 @@ namespace seneca {
    }
 
    istream& operator>> (istream& is, Mark& m){
-       int val{};
+      int temp_val{};
+
+      if (!(is >> temp_val)) {
+        
+        cout << "Invalid integer, try again.\n> ";
+      }
+
       while (true) {
          if (!(is >> val)) {
             is.clear();
@@ -217,7 +223,7 @@ namespace seneca {
       return ifs;
    }
 
-      double operator+(double v, const Mark& m) {
+   double operator+(double v, const Mark& m) {
       return v + m.raw();
    }
    int operator+(int v, const Mark& m) {
