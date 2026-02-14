@@ -162,30 +162,36 @@ namespace seneca {
    istream& operator>> (istream& is, Mark& m){
       int val{};
 
-
+      // Validation loop: continues until valid input is received
       while (true) {
+         // Attempt to extract an integer from the input stream
          if (!(is >> val)) {
             is.clear();
             is.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid integer, try again.\n> ";
-            continue;
+            continue; //Retry
          }
 
          // must be no trailing characters (only newline allowed)
-         char next = is.peek();
+         // Check for trailing non-digit characters (e.g., "77abc" or "77.0")
+         char next = is.peek(); // Peek at next character without consuming it
          if (next != '\n') {
-            is.ignore(numeric_limits<streamsize>::max(), '\n');
+            // Trailing characters detected
+            is.ignore(numeric_limits<streamsize>::max(), '\n'); // Flush remaining line
             cout << "Invalid trailing characters. Please enter only an integer.\n> ";
-            continue;
+            continue; // Retry
          }
+          // No trailing characters, consume the newline to clear buffer
+         is.get();
 
-         is.get(); // consume '\n'
-
+         // Validate that the integer is within acceptable range [0, 100]
          if (val < 0 || val > 100) {
             cout << "Invalid mark. Enter a value between 0 and 100.\n> ";
             continue;
+            // Retry
          }
 
+         // All validations passed: assign value to Mark object and exit loop
          m = val;
          break;
       }
