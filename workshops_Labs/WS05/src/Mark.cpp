@@ -17,9 +17,6 @@
 #include <cmath> // for round function
 #include "Mark.h"
 
-#include <iomanip>
-#include <limits>
-#include <fstream>
 using namespace std;
 namespace seneca {
    bool Mark::isValid()const {
@@ -121,16 +118,14 @@ namespace seneca {
 
    // student helper function implementations go here
    ostream& Mark::display (ostream& os) const {
-      // ios oldState(nullptr);
-      // oldState.copyfmt(os);
-
+     
       if (!isValid()) {
          if (m_type == GRADE) {
             os << "**";
          }  else {
             os << "***";
          }
-         // os.copyfmt(oldState);
+        
          return os;
 
       }
@@ -138,12 +133,11 @@ namespace seneca {
       if (m_type == GPA) {
          os << setw(3) << fixed << setprecision(1) << (double)(*this);
       } else if (m_type == MARK) {
-         os << setfill(' ') << setw(3) << right << (int)(*this);
+         os << setfill('_') << setw(3) << right << (int)(*this);
       } else { // GRADE
          os << setfill (' ') << setw(3) << left << (const char*)(*this);
       }
 
-      // os.copyfmt(oldState);
       return os;
    }
 
@@ -166,12 +160,8 @@ namespace seneca {
    }
 
    istream& operator>> (istream& is, Mark& m){
-      int temp_val{};
+      int val{};
 
-      if (!(is >> temp_val)) {
-        
-        cout << "Invalid integer, try again.\n> ";
-      }
 
       while (true) {
          if (!(is >> val)) {
@@ -204,19 +194,25 @@ namespace seneca {
    }
 
    ifstream& operator>>(ifstream& ifs, Mark& m) {
-      int val{};
-      char comma{};
-      char t{};
+      int val{}; // values
+      char comma{}; // commas
+      char t{}; // types
 
       ifs >> val;
       if (ifs) {
          ifs >> comma;  // should be ','
          ifs >> t;      // 'M', 'G', 'R'
          if (ifs) {
+
             m = val;
-            if (t == 'M') m = MARK;
-            else if (t == 'G') m = GPA;
-            else if (t == 'R') m = GRADE;
+            if (t == 'M') {
+               m = MARK;  
+            } else if (t == 'G') {
+                m = GPA;
+            } else if (t == 'R') {
+               m = GRADE;
+            }
+              
          }
          ifs.ignore(numeric_limits<streamsize>::max(), '\n');
       }
