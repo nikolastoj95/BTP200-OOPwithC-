@@ -12,6 +12,9 @@ struct Marks{
 
 //custom Constructor
 
+//Destructor
+    // member function called when object is distroyed
+
 
 
 
@@ -102,11 +105,17 @@ class Student {
            
         };
 
-        void deAllocate () {
-            delete[] name;
-            delete[] marksObj.marks;
+        // void deAllocate () {
+        //     delete[] name;
+        //     delete[] marksObj.marks;
 
-        };        
+        // };    // no need for it cause of destructor
+        
+        ~Student() {
+            cout << "Destructor working..." << endl;
+             delete[] name;
+             delete[] marksObj.marks;
+        };
 
 };
 
@@ -151,19 +160,27 @@ int main (void) {
         cout << "obect is empty"<< endl;
         }
 
-    
+    {
 
-    Student st2 (2002, "Sally");
+        Student st2(2002, "Sally");
 
-    if (!st2.isDefault()) {
-        st2.display();
-    } else {
-        cout << "obj is empty"<< endl;
+        if (!st2.isDefault())
+        {
+            st2.display();
+        }
+        else
+        {
+            cout << "obj is empty" << endl;
+        }
+
+       
     }
 
-    st.deAllocate();
-    st1.deAllocate();
-    st2.deAllocate();
+    
+    cout << "---" << endl;
+    // st.deAllocate();
+    // st1.deAllocate();
+    // st2.deAllocate();
 
     // std::cout << "Hello World!" << std::endl;
     return 0;
