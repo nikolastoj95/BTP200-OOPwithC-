@@ -10,9 +10,20 @@ using namespace std;
 // ++, -- 
 // 
 
+//video part 2  addition (+)m subtraction (-), multiplication (*), division(/), remainder (%)
+// +,-,*,/,%
+// + - for addition or summation
+// - for subtraction
+// *
+// /
+// %
+//
+
+//
+
 class Marks {
 
-    float m_marks [CAP]; //point to  dynamic array
+    float m_marks [CAP]; //point to  static array
     int m_capacity; // size of the array 32 MAX -- fixed size array
     int m_size; // less than or equal to capacity -- actual size of the array
     public:
@@ -31,21 +42,13 @@ class Marks {
             } 
             else {
                 m_size = 0;
+                // can not set p_marks to nulptr cause it is static
             }
             
         }
 
-    //    Marks& operator++(){
-    //     // pre increment
-    //     // 99.1 -> 100.1
-    //         for (int i=0; i<m_size; i++) {
-    //             m_marks[i] +=1; // 99.1 -> 100.1
-    //             m_marks[i] = m_marks[i] > 100?100:m_marks[i];
-    //         }
-    //         return *this;
-    //     }
         // pre incremate or prefix ++ operator ++mks
-        Marks& operator++(){
+        /*Marks& operator++(){
             //code and logic here
             // values in array by 1 increase
             for (int i = 0; i< m_size; i++) {
@@ -53,38 +56,74 @@ class Marks {
                 m_marks[i] = m_marks[i]> 100 ? 100 : m_marks[i];
             }
             return *this;
-        }
+        }*/
 
         //post- increment operator  mks++
-        Marks operator++(int) {
+        /*Marks operator++(int) {
             Marks temp = *this; // copy current object to temp object
             //call above ++ function in here
             ++(*this);
 
             return temp;
 
-        }
+        }*/
 
          // pre decremate or prefix -- operator --mks
-        Marks& operator--(){
-            //code and logic here
-            // values in array by 1 increase
-            for (int i = 0; i< m_size; i++) {
-                m_marks[i] -= 1; // 99.1 -> 100.1  do not want more than 100 limit to 100
-                m_marks[i] = m_marks[i]< 0 ? 0 : m_marks[i];
-            }
-            return *this;
-        }
+        // Marks& operator--(){
+        //     //code and logic here
+        //     // values in array by 1 increase
+        //     for (int i = 0; i< m_size; i++) {
+        //         m_marks[i] -= 1; // 99.1 -> 100.1  do not want more than 100 limit to 100
+        //         m_marks[i] = m_marks[i]< 0 ? 0 : m_marks[i];
+        //     }
+        //     return *this;
+        // }
 
         //post- dencrement operator  mks--
-        Marks operator--(int) {
-            Marks temp = *this; // copy current object to temp object
-            //call above ++ function in here
-            --(*this);
+        // Marks operator--(int) {
+        //     Marks temp = *this; // copy current object to temp object
+        //     //call above ++ function in here
+        //     --(*this);
 
+        //     return temp;
+
+        // }
+
+        //overloading + operator
+        // return by object value 
+       Marks operator+(const Marks& mks) const { // query function
+            Marks temp= *this; // copying current object to temp one
+            int tsize = temp.m_size;
+            for (int i = 0; i< mks.m_size &&  (tsize +1) < CAP; i++) {
+               temp.m_marks[tsize+i] = mks.m_marks[i];
+               temp.m_size++;
+
+            }
             return temp;
 
         }
+
+         Marks operator+(float val) const { 
+            Marks temp= *this; 
+            int tsize = temp.m_size;
+            if (tsize < m_capacity -1) {
+                
+                temp.m_marks[tsize] = val;
+                temp.m_size++;
+            }
+            return temp;
+        }
+
+        // add by 5 each marks elements 
+        Marks operator+(int val) const { 
+            Marks temp= *this; 
+           for (int i = 0; i<temp.m_size; i++) {
+                temp.m_marks[i] += val;
+
+           }
+            return temp;
+        }
+
 
         void display()  const {
                 if (m_size > 0){
@@ -101,21 +140,37 @@ class Marks {
 };
 
 int main (void) {  
-    float marks [] ={55.55,66.66,77.77}; //object array
-    Marks mks (3,marks);
+    float marks1 [] ={55.55,66.66,77.77}; //object array
+    float marks2 [] ={88.8, 99.9};
+    Marks mks1 (3,marks1),
+          mks2(2,marks2);
+    mks1.display();
+    mks2.display();
+
+    //Marks mks = mks1 + mks2;  // concatenate marks in two object  1st vers
+    //Marks mks = mks1 + 88.88f;  // append 88.8 to the marks array  2nd vers
+    Marks mks = mks1 + 5; //5 will be added to all marks in array // 3rd vers
+    
+    
+    
+    
+    // operation will concat two object
+
     mks.display();
+
+
     //++mks; // pre increment // increment before  object
     // mks++;
 
-    (++mks).display(); // operator function needs to return object return * this, Marks& 
+    //(++mks).display(); // operator function needs to return object return * this, Marks& 
     //mks.display();
     // 3 times
-    cout << "------" << endl;
-    mks++; // post incrumate
+    // cout << "------" << endl;
+    // mks++; // post incrumate
     //mks.display();
 
-    (mks++).display();
-    mks.display();
+    // (mks++).display();
+    // mks.display();
 
     //2 times 
     // int x = 5;
@@ -124,9 +179,9 @@ int main (void) {
     // int y = 6+ ++x;
     // ++ (++x);
     // cout << y<<endl;
-    (--mks).display(); // preincremate
-    (mks--).display(); // post increment
-    mks.display();
+    // (--mks).display(); // preincremate
+    // (mks--).display(); // post increment
+    // mks.display();
 
     
     
