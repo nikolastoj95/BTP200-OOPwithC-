@@ -19,7 +19,8 @@ using namespace std;
 // %
 //
 
-//
+//video part 3 subtrction -
+
 
 class Marks {
 
@@ -123,6 +124,47 @@ class Marks {
            }
             return temp;
         }
+        // overloading - operator
+         Marks operator-(const Marks& mks) const {
+            Marks temp = *this;
+            for (int i = 0; i< temp.m_size ; i++) {
+                temp = temp - mks.m_marks[i]; // it invokes bottom function
+            }
+            return temp;
+         }
+
+          Marks operator-(int val) const {
+            Marks temp = *this;
+            for (int i = 0; i< temp.m_size ; i++) {
+                temp.m_marks[i] -= val;  // might go below 0
+                temp.m_marks[i]  = temp.m_marks[i] < 0 ? 0 : temp.m_marks[i];
+            }
+            return temp;
+         }
+
+
+        // overloading - operator
+        // remove a float value from second one 
+        Marks operator-(float val) const {
+            Marks temp = *this; // create temp obj by copy current obj
+            int i ;
+            bool exit = false;
+            for (i =0; i< temp.m_size && !exit ;i++) {
+                if (temp.m_marks[i] == val) {
+                    exit = true; // when match happens
+                }
+            }
+            i--;
+            if (exit == true) {
+                for (int j = i; j<temp.m_size-1; j++) {
+                    temp.m_marks[j] = temp.m_marks[j+1];
+                }
+
+                temp.m_size--;
+            }
+            return temp;
+        }
+
 
 
         void display()  const {
@@ -140,8 +182,8 @@ class Marks {
 };
 
 int main (void) {  
-    float marks1 [] ={55.55,66.66,77.77}; //object array
-    float marks2 [] ={88.8, 99.9};
+    float marks1 [] ={55.55,88.88,77.77}; //object array
+    float marks2 [] ={88.88, 55.55};
     Marks mks1 (3,marks1),
           mks2(2,marks2);
     mks1.display();
@@ -149,9 +191,11 @@ int main (void) {
 
     //Marks mks = mks1 + mks2;  // concatenate marks in two object  1st vers
     //Marks mks = mks1 + 88.88f;  // append 88.8 to the marks array  2nd vers
-    Marks mks = mks1 + 5; //5 will be added to all marks in array // 3rd vers
+    //Marks mks = mks1 + 5; //5 will be added to all marks in array // 3rd vers
     
-    
+    //Marks mks = mks1 - mks2;  // mks1 - whats in mks2  and mks1 //  remove marks from mks1 that are in mks2
+    //Marks mks = mks1 - 66.66f;  // remove 88.8 from the mks1 if it exsits 2nd vers
+    Marks mks = mks1 - 5; // 5 will be subtracted from all marks in array 
     
     
     // operation will concat two object
