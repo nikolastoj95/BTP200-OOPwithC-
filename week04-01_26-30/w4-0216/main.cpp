@@ -22,6 +22,9 @@ struct Marks{
 
 // Parameter Data Validdation 
 
+//This Keyword (this pointer)
+
+
 
 
 
@@ -173,7 +176,6 @@ class Student {
 
 
 
-
 int main (void) {
 
     Marks mks; // create marks object
@@ -183,56 +185,36 @@ int main (void) {
 
     Student st; // creates an object, invokes default constructor // sets data members to 0, nullptr
 
-    // if (!st.isDefault()) {
-         st.display();
-    // } else {
-    //     cout << "object data is empty"<< endl;
-    // }
+    
+    st.display();
+   
 
 
 
     st.set(1001,"Jackson", mks);
     
 
-    // if (!st.isDefault()) {
-         st.display();
-    // } else {
-    //     cout << "object is empty" << endl;
-    // }
+    
+    st.display();
+   
 
     // no need for set() or default constructor calls if doing customer constructor calls
     Student st1 (1001,"Jackson", mks); // - need to have custom constructor defined
 
     
 
-    //  if (!st1.isDefault()) {
-         st1.display();
-    //  } else {
-    //     cout << "obect is empty"<< endl;
-    //     }
+    
+    st1.display();
+  
 
     
 
-        Student st2(2002, "Sally");
+    Student st2(2002, "Sally");
 
-        // if (!st2.isDefault())
-        // {
-             st2.display();
-        // }
-        // else
-        // {
-        //     cout << "obj is empty" << endl;
-        // }
-
-       
-    
-
+     
+    st2.display();
     
     cout << "---" << endl;
-    // st.deAllocate();
-    // st1.deAllocate();
-    // st2.deAllocate();
 
-    // std::cout << "Hello World!" << std::endl;
     return 0;
 }
