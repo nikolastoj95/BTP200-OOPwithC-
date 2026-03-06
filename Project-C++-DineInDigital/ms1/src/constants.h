@@ -1,3 +1,4 @@
+#include <cstddef>
 #ifndef SENECA_CONSTANTS_H
 #define SENECA_CONSTANTS_H
 
