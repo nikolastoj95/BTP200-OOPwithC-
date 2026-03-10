@@ -54,5 +54,5 @@ namespace seneca {
       }
       return cstring && *cstring == 0;
    }
-
+   
 }
