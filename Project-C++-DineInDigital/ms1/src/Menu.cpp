@@ -88,8 +88,13 @@ namespace seneca {
         return ostr;
     }
 
-     ostream& operator<<(ostream& ostr, const MenuItem& item) {
-        return item.display(ostr);
+    std::ostream& MenuItem::display() const {
+        return display(std::cout);
     }
+
+
+    //  ostream& operator<<(ostream& ostr, const MenuItem& item) {
+    //     return item.display(ostr);
+    // }
 
 }
