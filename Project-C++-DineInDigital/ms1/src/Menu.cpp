@@ -42,26 +42,6 @@ namespace seneca {
             if (sizeInd > 4) return;
             if (numMenu > (int)MaximumNumberOfMenuItems) return;
 
-        
-            if (menuText != nullptr) {
-                m_menuContent = new char[strlen(menuText) +1];
-                strcpy( m_menuContent, menuText);
-            } else {
-                menuText = nullptr;
-            }
-            if (menuText == nullptr || menuText[0] == '\0' || ut.isspace(menuText) ) {
-                 m_menuContent = nullptr;
-            } else {
-                m_menuContent = new char[ut.strlen(menuText) +1];
-                ut.strcpy( m_menuContent, menuText);
-            }
-
-            if (numInd  > 4) {
-                m_numberIndent = 0;
-            } else {
-                m_numberIndent = numInd;
-            }
-
             m_menuContent = new char[ut.strlen(menuText) +1];
             ut.strcpy( m_menuContent, menuText);
             m_numberIndent = numInd;
@@ -71,6 +51,8 @@ namespace seneca {
 
      MenuItem::~MenuItem() {
         delete[] m_menuContent;
+        setEmpty();
+
      }
 
      MenuItem:: operator bool() const {
