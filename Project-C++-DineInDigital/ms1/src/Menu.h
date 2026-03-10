@@ -48,8 +48,10 @@ namespace seneca {
         operator bool() const;
 
         std::ostream& display (std::ostream& ostr) const;
+
+        std::ostream& display() const;
     };
 
-    std::ostream& operator<< (std::ostream& ostr, const MenuItem& item);
+    //std::ostream& operator<< (std::ostream& ostr, const MenuItem& item);
 };
 #endif
