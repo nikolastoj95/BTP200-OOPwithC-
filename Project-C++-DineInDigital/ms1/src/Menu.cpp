@@ -65,7 +65,7 @@ namespace seneca {
     ostream& MenuItem::display (ostream& ostr) const {
         if (!*this) {
             // Menu Item is invalid
-            ostr << "?????????";
+            ostr << "??????????";
             return ostr;
         }
         // continue if m_content id not null
