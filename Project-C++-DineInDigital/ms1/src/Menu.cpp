@@ -43,25 +43,24 @@ namespace seneca {
             if (numMenu > (int)MaximumNumberOfMenuItems) return;
 
         
-            // if (menuText != nullptr) {
-            //     m_menuContent = new char[strlen(menuText) +1];
-            //     strcpy( m_menuContent, menuText);
-            // } else {
-            //     menuText = nullptr;
-            // }
-            // if (menuText == nullptr || menuText[0] == '\0' || ut.isspace(menuText) ) {
-            //      m_menuContent = nullptr;
-            // } else {
-            //     m_menuContent = new char[ut.strlen(menuText) +1];
-            //     ut.strcpy( m_menuContent, menuText);
-            // }
+            if (menuText != nullptr) {
+                m_menuContent = new char[strlen(menuText) +1];
+                strcpy( m_menuContent, menuText);
+            } else {
+                menuText = nullptr;
+            }
+            if (menuText == nullptr || menuText[0] == '\0' || ut.isspace(menuText) ) {
+                 m_menuContent = nullptr;
+            } else {
+                m_menuContent = new char[ut.strlen(menuText) +1];
+                ut.strcpy( m_menuContent, menuText);
+            }
 
-            // if (numInd  > 4) {
-            //     m_numberIndent = 0;
-            // } else {
-            //     m_numberIndent = numInd;
-            // }
-
+            if (numInd  > 4) {
+                m_numberIndent = 0;
+            } else {
+                m_numberIndent = numInd;
+            }
 
             m_menuContent = new char[ut.strlen(menuText) +1];
             ut.strcpy( m_menuContent, menuText);
@@ -107,26 +106,8 @@ namespace seneca {
         return ostr;
     }
 
-    // ostream &MenuItem::display() const{
-    //     return display(cout);
-    // }
-
      ostream& operator<<(ostream& ostr, const MenuItem& item) {
         return item.display(ostr);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
