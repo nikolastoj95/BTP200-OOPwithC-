@@ -1,3 +1,20 @@
+/* Citation and Sources...
+Final Project Milestone 1: 
+Module: Menu
+Filename: Menu.cpp
+Version 1.0
+Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2026/03/03  Preliminary release
+2024/03/07  created Menu.cpp logic for member functions
+2024/03/08   added validations, statments to display
+2024/03/09  Debugged, Tested, run in main, works, done
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code 
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
 #include "Menu.h"
 #include "constants.h"
 #include "Utils.h"
