@@ -24,11 +24,11 @@ int main() {
    if (std::is_copy_constructible<MenuItem>::value) {
       cout << "You did not prevent the copy construction" << endl;
    }
-   MenuItem(nullptr, 1, 1, 1).display() <<  endl;
+   MenuItem(nullptr, 1, 1, 1).display(cout) <<  endl; //???????? //
    if (MenuItem(nullptr, 1, 1, 1) == false) cout << "This is an invalid MenuItem" << endl;
    for (size_t row = 0; row < 11; row+=5) {
       for (size_t i = 0; i < 5; i++) {
-         MenuItem(" \t\v\r\f\nThe Menu Item", i, i + 1, int(row + i)-1).display() << endl;
+         MenuItem("\t\v\r\f\nThe Menu Item-yes", i, i + 1, int(row + i)-1).display(cout) << endl;
          
       }
    }
