@@ -56,43 +56,73 @@ namespace seneca{
         delete[] m_filename;
     }
     //copy constructor
-     Numbers::Numbers(const Numbers& other) {
-      setEmpty(); // put object in safe empty state 
-      m_isOriginal = false; // mark obj as not origanal 
-      
-      
+      Numbers::Numbers(const Numbers& other) {
+      setEmpty();
+      m_isOriginal = false;
+      m_numCount = other.m_numCount;
 
       if (!other.isEmpty()) {
-         m_numCount = other.m_numCount;
          m_numbers = new double[m_numCount];
          for (int i = 0; i < m_numCount; i++) {
             m_numbers[i] = other.m_numbers[i];
          }
       }
    }
+   //   Numbers::Numbers(const Numbers& other) {
+   //    setEmpty(); // put object in safe empty state 
+   //    m_isOriginal = false; // mark obj as not origanal 
+      
+      
+
+   //    if (!other.isEmpty()) {
+   //       m_numCount = other.m_numCount;
+   //       m_numbers = new double[m_numCount];
+   //       for (int i = 0; i < m_numCount; i++) {
+   //          m_numbers[i] = other.m_numbers[i];
+   //       }
+   //    }
+   // }
     // copy assignment operator
     Numbers& Numbers::operator=(const Numbers& other) {
-      if (this != &other) { //1. avoids self - assignment
-         delete[] m_numbers; // 2.delete current data
+      if (this != &other) {
+         delete[] m_numbers;
          m_numbers = nullptr;
-        
-         m_isOriginal = false;
-         m_filename = nullptr;
+         m_numCount = other.m_numCount;
 
-         if (!other.isEmpty()) { // 3. only copy if other has data
-            m_numCount = other.m_numCount;
-
-            m_numbers = new double[m_numCount]; // 4. allocate new memory 
+         if (!other.isEmpty()) {
+            m_numbers = new double[m_numCount];
             for (int i = 0; i < m_numCount; i++) {
-               m_numbers[i] = other.m_numbers[i]; // 5. deep copy values
+               m_numbers[i] = other.m_numbers[i];
             }
-         } else {
-            m_numCount = 0;
          }
       }
-
-      return *this; // 6. return current object
+      return *this;
    }
+
+    
+
+   //  Numbers& Numbers::operator=(const Numbers& other) {
+   //    if (this != &other) { //1. avoids self - assignment
+   //       delete[] m_numbers; // 2.delete current data
+   //       m_numbers = nullptr;
+        
+   //       m_isOriginal = false;
+   //       m_filename = nullptr;
+
+   //       if (!other.isEmpty()) { // 3. only copy if other has data
+   //          m_numCount = other.m_numCount;
+
+   //          m_numbers = new double[m_numCount]; // 4. allocate new memory 
+   //          for (int i = 0; i < m_numCount; i++) {
+   //             m_numbers[i] = other.m_numbers[i]; // 5. deep copy values
+   //          }
+   //       } else {
+   //          m_numCount = 0;
+   //       }
+   //    }
+
+   //    return *this; // 6. return current object
+   // }
 
 //     bool Numbers::isEmpty() const {
 //       return m_numbers == nullptr;
@@ -151,58 +181,44 @@ namespace seneca{
 //       }
 //       return maxVal;
 //    }
-
-    int Numbers::numberCount() const {
+   int Numbers::numberCount() const {
       int count = 0;
-       
-      if(m_filename) {
-         ifstream file(m_filename);
-         if (file.is_open()) {
-            char ch;
+      char ch;
+      ifstream file(m_filename);
 
-            //Read Character by charcter by char
-            while (file.get(ch)){
-               if (ch == '\n'){
-                  count++;
-               }
-            }
+      while (file.get(ch)) {
+         if (ch == '\n') {
+            count++;
          }
       }
-       return count;
+
+      return count;
    }
 
-    bool Numbers::load() {
+   
+   bool Numbers::load() {
       bool ok = false;
-      if (m_filename) {
-         m_numCount = numberCount();
-         if (m_numCount > 0) {
-            // Allocate memory for the numbers
-             m_numbers = new double[m_numCount];
-             ifstream file (m_filename);
-             if (file.is_open()) {
-               int i = 0;
-               double value;
-               //Read doubles untill array is filled
-               while (file >> value) {
-                  m_numbers[i++] = value;
 
-                  //Only increment i if reading is successfull
-                  if (i== m_numCount) {
-                     break;
-                  }
-               }
-               if (i== m_numCount){
-                  ok = true;
-               } else {
-                  delete[] m_numbers;
-                  m_numbers = nullptr;
-                  m_numCount =0;
+      if (m_numCount > 0) {
+         m_numbers = new double[m_numCount];
+         ifstream file(m_filename);
+         int i = 0;
 
-               }
+         while (file) {
+            file >> m_numbers[i];
+            if (file) {
+               i++;
+            }
+         }
 
-
-             }
-
+         if (i == m_numCount) {
+            ok = true;
+         } else {
+            delete[] m_numbers;
+            m_numbers = nullptr;
+            m_filename = nullptr;
+            m_numCount = 0;
+            ok = false;
          }
       }
 
