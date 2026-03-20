@@ -15,10 +15,7 @@ namespace seneca{
        
     public:
         Professor();
-            // m_subjectName = nullptr;
-            // m_numSections = 0;
-      
-
+            
         Professor(const char* name, const char* nameSubject, int numSections, size_t employeeNo, double salary );  //: Employee(name, employeeNo, salary );
 
         Professor (const Professor&) = delete;
@@ -28,17 +25,14 @@ namespace seneca{
         //delete[] m_subjectName;
         // m_subjectName = nullptr;
 
-        std::istream& read(std::istream& istr = std::cin);
-        std::ostream& write(std::ostream& ostr = std::cout)const;
-        std::ostream& title(std::ostream& ostr = std::cout)const;
-
-
-        
-
-
-
+        std::istream& read(std::istream& istr = std::cin );
+        std::ostream& write(std::ostream& ostr = std::cout)const ;
+        std::ostream& title(std::ostream& ostr = std::cout)const ;
 
     };
+
+    std::ostream& operator<<( std::ostream& ostr, const Professor& P );
+    std::istream& operator>>( std::istream& istr, Professor& P );
 
 
 
