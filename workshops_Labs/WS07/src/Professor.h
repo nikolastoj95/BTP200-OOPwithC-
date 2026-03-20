@@ -11,9 +11,9 @@ Subject: BTP200NAA
 Revision History
 ------- --------- ------------------------------------------
 Version Date      Reason
-V0.8    2025/03/10 Opened File, read instructions, created the required methods, functions
-V0.9    2025/01/13 Ran tests, debugged, Works, added citation on the top
-V1.0    2025/01/13 Ready for submission
+V0.8    2025/03/18 Opened File, read instructions, created Professor class, derived class from employee, added 2 attibutes , function sigtures, overloaded methods (read,write,title), constructors (no-arg, 5-arg)
+V0.9    2025/01/19 Added  private method, devPay that takes salary from Employee (Protected) used in Professor class, to calculate salary with num of sections, added two output, input helper methods to call read/write  
+V1.0    2025/01/20 Ready for submission
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my work for function whatever.
