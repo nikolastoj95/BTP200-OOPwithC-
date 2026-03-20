@@ -58,8 +58,9 @@ namespace seneca {
 
     std::ostream& Professor::title(ostream& ostr)const{
         Employee::title(ostr);
-        return ostr <<" Teaching Subject     | Sec # | $Dev Pay |";
+        return ostr << " Teaching Subject     | Sec # | $Dev Pay |";
    }
+  
 
     std::istream& Professor::read(std::istream& istr ){
         // Name, Employee Num, Salary, Subject Name, Number of Sections
@@ -76,7 +77,6 @@ namespace seneca {
 
         // Read number of  Sections
         istr >> m_numSections;
-        istr.ignore(); // ignore new line
         return istr;
     }
 
@@ -132,6 +132,7 @@ namespace seneca {
     }
     std::istream& operator>>( std::istream& istr, Professor& P ) {
         // helper to read input, calls Professor's read method
+        
         return P.read(istr);
     }
 
