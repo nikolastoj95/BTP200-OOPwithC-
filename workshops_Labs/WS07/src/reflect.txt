@@ -1,0 +1,14 @@
+Nikola Stojanovic 027 369 149
+Workshop 07
+BTP200 NAA
+Reflection
+
+
+
+While finshing this workshop, I learned how to design and implement a class using object-oriented programming concepts in C++. I created a CC module (a header file, and a cpp file) which encapsulates credit card info for card holders. I created a Class, in there I  created 5 private data members, and used public member functions to control access to the class fields. I used set() to set the fields with the corrsponding data and a constructer to set them. I had private methods to check the input given, so it is in correct format and used overloaded functions to display the data. 
+
+One of the most important things I used again was working with pointers and dynamic memory allocation.  For the cardholder name, it was stored as a dynamiclly allocated C string, I allocated the memory using (new) and released it when done, using (delete). This is important step to prevent memory leaks. When doing this I used it in a deconstructor. 
+
+I used constructors to initialize an object  into a safe empty state, then used setters to assign the values. Since the display method is private, I used a overloaded display that was public and called the display method inside to show the data. 
+
+One difficulty was managing the dynamic memory and making sure there was no leaks or invaild pointers.
