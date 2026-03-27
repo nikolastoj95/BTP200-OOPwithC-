@@ -11,9 +11,9 @@ Subject: BTP200NAA
 Revision History
 ------- --------- ------------------------------------------
 Version Date      Reason
-V0.8    2025/03/18 Opened File, read instructions, created the logic for the  required methods, constructors, validation, displaying, reading files 
-V0.9    2025/01/19 Created in write, read in Professor class to show the number of sections, subject name, and called base class method to display those first 
-V1.0    2025/01/20 Tested, Debuged , and Ready for submission
+V0.8    2025/03/26 Opened Files, read instructions, created LblShape.h (header file) abstract class inheriting Shape interface
+V0.9    2025/01/27 added function sigtures for LblShape class, added m_label field, protected members label(), adedd defualt and on-arg constrctors to inialize label. overrided one method getSpecs()
+V1.0    2025/01/27 Tested, Debuged , and Ready for submission
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my work for function whatever.
@@ -42,7 +42,7 @@ namespace seneca {
       // Constructor with label initialization
       LblShape(const char* label);
          //m_label = nullptr;
-         //Utils::alocpy(m_label, label);
+         //ut.alocpy(m_label, label);
       
 
       // Copy constructor and assignment operator are deleted to prevent copying

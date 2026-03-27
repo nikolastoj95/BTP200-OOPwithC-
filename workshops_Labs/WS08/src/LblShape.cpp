@@ -11,9 +11,9 @@ Subject: BTP200NAA
 Revision History
 ------- --------- ------------------------------------------
 Version Date      Reason
-V0.8    2025/03/18 Opened File, read instructions, created the logic for the  required methods, constructors, validation, displaying, reading files 
-V0.9    2025/01/19 Created in write, read in Professor class to show the number of sections, subject name, and called base class method to display those first 
-V1.0    2025/01/20 Tested, Debuged , and Ready for submission
+V0.8    2025/03/26 Opened Files, read instructions, created LblShape.cpp (fucntion defination file) abstract class inheriting Shape interface
+V0.9    2025/01/27  added function logic for label() to print the label, constructors to allocate memory for m_label field, getSpecs() function to read given label
+V1.0    2025/01/27 Tested, Debuged , and Ready for submission
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my work for function whatever.
