@@ -35,6 +35,7 @@ namespace seneca {
     std::istream& operator>> (std::istream& istr, Shape& S) {
         S.getSpecs(istr);
         return istr;
+        
     }
 
 
