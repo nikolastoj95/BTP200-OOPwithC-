@@ -11,9 +11,9 @@ Subject: BTP200NAA
 Revision History
 ------- --------- ------------------------------------------
 Version Date      Reason
-V0.8    2025/03/18 Opened File, read instructions, created the logic for the  required methods, constructors, validation, displaying, reading files 
-V0.9    2025/01/19 Created in write, read in Professor class to show the number of sections, subject name, and called base class method to display those first 
-V1.0    2025/01/20 Tested, Debuged , and Ready for submission
+V0.8    2026/03/26 Opened Files, read instructions, created Rectangle.h (header file) concrete class inheriting LblShape class
+V0.9   2026/01/27  added function sigtures for Rectangle class, added m_width and m_height fields for the rectangle frame, added constructors to accept length of label, label, width and height , added two overridden functions draw() and getSpecs()
+V1.0    2026/01/27 Tested, Debuged , and Ready for submission
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my work for function whatever.
