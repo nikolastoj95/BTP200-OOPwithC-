@@ -69,7 +69,7 @@ public:
 class Dog : public Animal {
     //feilds  attributes 
     //bits for current year, previus year, previous- previus year, ... {5,2,7}
-    int* numOfBites;
+    int* numOfBites; // dynamic array 
     int size; // size of array
 
 public:
@@ -77,7 +77,7 @@ public:
     // constructor is not inherited like methods, fields 
     // automatically calls base class constructor
     Dog() : Animal("Spot") { // by default it will call default constructor  of the base class
-        // to call bases class constructor  : name of base class () Dog() : Animal() {}
+        // to call bases class constructor  : name of base class ()// like -> Dog() : Animal() {}
         //default values
       std::cout<< "D-DCstr" << std::endl;
       numOfBites = nullptr;
@@ -100,6 +100,37 @@ public:
         }
     }
 
+     //copy assignment operator
+     //copy assignment operator for Dog class (derived class)
+    Dog& operator= (const Dog& dg){
+        if (this !=  &dg) {
+            // if this obj not object to be assigned (obj in param)
+            (Animal&)*this = dg; // to call base class copy assignment
+            //Animal :: operator=(dg); // second way
+
+
+
+            if (numOfBites != nullptr)
+                // trying to access memory not allowed to be deleted cause copy constructor is not allocated memory
+                delete []numOfBites;
+            numOfBites = nullptr;
+            size = 0;
+            
+            if (dg.numOfBites != nullptr && dg.size > 0){
+                //shallow copy
+                size = dg.size;
+                numOfBites = new int [size];
+                // deep copy
+                for (int i = 0 ; i< size; i++){
+                    numOfBites[i] = dg.numOfBites[i];
+                }
+
+            }
+
+        }
+        return *this; // return current object
+    }
+
     //display data
     std::ostream& operator << (std::ostream& os) const {
         //call Base Class method
@@ -111,6 +142,8 @@ public:
         }
         return  os;
     }
+
+    
 
 
 
@@ -167,12 +200,24 @@ int main (){
 
     int numOfBites [] = {2, 5, 4, 3 };
 
-    Dog dg; // create dg Dog obj
+    Dog dg("Patch",&numOfBites[1],3); // create dg Dog obj
     {
         Dog dg1("Spot", numOfBites, 4); // copy name to base class
                                      // two numofBites,  size  Dervied class  to its own attributes
         //display
         std::cout << dg1 <<std::endl;
+
+        //copy assignment operator
+        dg1 = dg; // copying dg1 to dg1
+
+        // display dg1 
+        // spot will be Patch
+        // name was not copyed
+        std::cout << dg1 <<std::endl;
+
+
+
+
 
         /*
         A-CCstr
