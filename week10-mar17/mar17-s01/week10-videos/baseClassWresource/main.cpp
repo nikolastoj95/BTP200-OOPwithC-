@@ -82,8 +82,37 @@ public:
       std::cout<< "D-DCstr" << std::endl;
       numOfBites = nullptr;
       size = 0;  
-
     }
+    //custom constructor
+    Dog(const char* p_name, const int* p_numBites, int p_size) : Animal (p_name){
+        std::cout<< "D-CCstr" << std::endl;
+        // set to default state
+        numOfBites = nullptr;
+        size = 0;
+        if (p_numBites != nullptr && p_size > 0) {
+            // set the attrubtes
+            size = p_size;
+            numOfBites = new int[size];
+            for (int i =0 ; i< size; i++){
+                numOfBites[i] =  p_numBites[i];
+            }
+
+        }
+    }
+
+    //display data
+    std::ostream& operator << (std::ostream& os) const {
+        //call Base Class method
+       (Animal&) *this << os; // to display the name // manually call base class method
+        //Animal(os);
+        os <<  " Bites: ";
+        for (int i = 0; i<size; i++){
+            os << numOfBites[i] << (numOfBites ? "," :".");
+        }
+        return  os;
+    }
+
+
 
 
     //destructor
@@ -101,35 +130,62 @@ public:
 
 
 // free helper operator
-std::ostream& operator<< (std::ostream& os, Animal& anm) {
+// change to dog class
+// std::ostream& operator<< (std::ostream& os, Animal& anm) {
+//     // this invokes calls the display method in class Animal
+
+//    return anm<< os;
+// }
+
+// free helper operator
+// change to dog class
+std::ostream& operator<< (std::ostream& os, Dog& dg) {
     // this invokes calls the display method in class Animal
 
-   return anm << os;
+   return dg << os;
 }
 
 int main (){
-    if (0) {
-         Animal a1 ("Jack"), a2 ("Don"); // create object
+    // if (0) {
+    //      Animal a1 ("Jack"), a2 ("Don"); // create object
 
-        std::cout<< a1 << std::endl <<a2 <<std::endl;
-        //Name: Jack
-        //Name: Don
+    //     std::cout<< a1 << std::endl <<a2 <<std::endl;
+    //     //Name: Jack
+    //     //Name: Don
 
-        Animal a3 =  a1; // setting a3 to existing a1 obj // copy constructor
+    //     Animal a3 =  a1; // setting a3 to existing a1 obj // copy constructor
 
-        std::cout <<a3 <<std::endl;
-        //Name: Jack
+    //     std::cout <<a3 <<std::endl;
+    //     //Name: Jack
 
-        a1 = a2; // copy assignment // a1 is a2 now
+    //     a1 = a2; // copy assignment // a1 is a2 now
 
-        std::cout << a1 << std::endl;
-        //Name: Don
+    //     std::cout << a1 << std::endl;
+    //     //Name: Don
 
-    }
+    // }
+
+    int numOfBites [] = {2, 5, 4, 3 };
 
     Dog dg; // create dg Dog obj
     {
-        Dog dg1;
+        Dog dg1("Spot", numOfBites, 4); // copy name to base class
+                                     // two numofBites,  size  Dervied class  to its own attributes
+        //display
+        std::cout << dg1 <<std::endl;
+
+        /*
+        A-CCstr
+        "D-CCstr
+
+
+
+
+        
+        
+        */
+
+    
     }
 
     /*
@@ -141,6 +197,12 @@ int main (){
     A-Dstr
     D-Destr
     A-Dstr
+    */
+
+    /*
+    
+    
+    
     */
 
 
