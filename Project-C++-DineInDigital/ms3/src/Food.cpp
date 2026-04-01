@@ -7,11 +7,9 @@ Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2026/02/25  Preliminary release
-2024/03/19  added constructors, to Menu class initalized Menu item attbutes as well added logic to constructor, deconsructor 
-2024/03/19  added  logic for operator overload << to add menu items titles, to object, added to select() which shows the whole menu, and able to select and display
-2024/03/20  tested, debugged, ran
-2024/03/21  checked and done
+2026/02/30  added function definations for Food class inherited from Billable
+2024/03/31  tested, debugged, ran
+2024/03/31  checked and done
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my workshops and assignments.
@@ -37,15 +35,7 @@ namespace seneca{
         m_child = false;
         m_customize = nullptr;
     }
-
     //copy constructor
-    // Food::Food(const Food& src){
-    //     m_customize = nullptr;
-    //     m_child = false;
-    //     m_ordered = false;
-    //     *this = src;
-    // }
-
     Food::Food(const Food& src) : Billable(src) {
         m_ordered = src.m_ordered;
         m_child = src.m_child;
@@ -58,24 +48,6 @@ namespace seneca{
 
 
     // copy assignment
-    // Food& Food::operator=(const Food &food)
-    // {
-    //     if (this != &food)
-    //     {
-    //         delete[] m_customize;
-    //         m_customize = nullptr;
-
-    //         if (food.m_customize)
-    //         {
-    //             m_customize = ut.alocpy(food.m_customize); // deep copy
-    //         }
-
-    //         m_child = food.m_child; // copy child
-    //         m_ordered = food.m_ordered;
-    //     }
-
-    //     return *this;
-    // }
 
     Food& Food::operator=(const Food& src) {
         if (this != &src) {
@@ -142,11 +114,6 @@ namespace seneca{
     // order
 
     bool Food::order() {
-        // cout << "           Food Size Selection\n";
-        // cout << "           1- Adult\n";
-        // cout << "           2- Child\n";
-        // cout << "           0- Back\n";
-        // cout << "           > ";
 
         cout << "         Food Size Selection\n";
         cout << "          1- Adult\n";
@@ -155,8 +122,7 @@ namespace seneca{
         cout << "         > ";
 
         int choice = ut.getInt(0,2);
-        // int choice{};
-        // cin >> choice;
+       
         if (choice == 0 ) {
             m_ordered = false;
             m_child = false;
