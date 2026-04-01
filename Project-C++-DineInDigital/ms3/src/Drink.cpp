@@ -34,7 +34,7 @@ namespace seneca{
 
     std::ostream& Drink::print(std::ostream& ostr ) const  {
         // 1. Name (28 chars, padded with dots)
-        // const char* nm = *this;
+       
         const char* nm = Billable::operator const char *();
         ostr << left << setw(28) <<setfill('.') << (nm ? nm : "") << setfill(' ');
 
@@ -67,13 +67,6 @@ namespace seneca{
     }
 
      bool Drink::order() {
-        // cout << "Drink Size Selection\n";
-        // cout << "           1- Small\n";
-        // cout << "           2-Medium\n";
-        // cout << "           3- Large\n";
-        // cout << "           4- Extra Large\n";
-        // cout << "           0- Back\n";
-        // cout << "> ";
         cout << "         Drink Size Selection\n";
         cout << "          1- Small\n";
         cout << "          2- Medium\n";
