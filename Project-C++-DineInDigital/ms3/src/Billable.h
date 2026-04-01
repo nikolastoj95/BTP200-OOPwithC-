@@ -7,9 +7,7 @@ Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2026/02/25  Preliminary release
-2024/03/19  added constructors, to Menu class initalized Menu item attbutes as well added logic to constructor, deconsructor 
-2024/03/19  added  logic for operator overload << to add menu items titles, to object, added to select() which shows the whole menu, and able to select and display
+2026/02/25  Read requirments, added function signtures for Header file Billable class abstract class with rule of 3 implemented
 2024/03/20  tested, debugged, ran
 2024/03/21  checked and done
 -----------------------------------------------------------
