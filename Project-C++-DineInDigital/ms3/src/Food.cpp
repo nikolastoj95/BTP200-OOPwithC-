@@ -172,8 +172,8 @@ namespace seneca{
             file.ignore(1000, '\n');
 
             // set the name, and price to the fields 
-            this -> Billable::name(foodName);
-            this -> Billable::price(foodPrice);
+            Billable::name(foodName);
+            Billable::price(foodPrice);
 
             m_child = false;
             m_ordered = false;
