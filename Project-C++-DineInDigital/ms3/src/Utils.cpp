@@ -69,7 +69,7 @@ namespace seneca {
 
          //1. Empty input
          if (line.empty()){
-            cout << "You must enter a value: ";
+           // cout << ""; // change this back
             continue;
          }
 
