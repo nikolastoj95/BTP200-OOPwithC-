@@ -7,11 +7,9 @@ Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2026/02/25  Preliminary release
-2024/03/19  added constructors, to Menu class initalized Menu item attbutes as well added logic to constructor, deconsructor 
-2024/03/19  added  logic for operator overload << to add menu items titles, to object, added to select() which shows the whole menu, and able to select and display
-2024/03/20  tested, debugged, ran
-2024/03/21  checked and done
+2026/03/30  defination functions, methods for Drink class
+2024/03/31  tested, debugged, ran
+2024/03/31  checked and done
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my workshops and assignments.
