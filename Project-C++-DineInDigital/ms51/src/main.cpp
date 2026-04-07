@@ -5,9 +5,6 @@
 using namespace std;
 using namespace seneca;
 
-void listFoods();
-void listDrinks();
-
 
 int main() {
 
@@ -35,7 +32,7 @@ int main() {
         
         switch (selection = homeMenu.select())
         {
-            
+
         case 0:
             if (ord.hasUnsavedBill()){
                 confirm = exitConfrim.select();
@@ -97,27 +94,3 @@ int main() {
 
     return 0;
 }
-
-void listFoods() {
-    
-    // cout << "testing List all Foods for ordering from file"<< endl;
-    
-    // cout << "Listing Foods Test" <<endl;
-    
-    
-    // Menu listFmenu("Seneca Resturant", "End Program");
-    // appMenu << "Order" << "Print Bill" << "Start a New Bill" << "List Foods" << "List Drinks";
-
-    // appMenu.select();
-}
-
-void listDrinks() {
-    
-    
-}
-
-
-
-
-//  cout << "Listing Drinks Test" <<endl;
-//     ord.listDrinks();
