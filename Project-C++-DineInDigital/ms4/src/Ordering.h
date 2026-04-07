@@ -6,9 +6,12 @@ Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2026/02/25  Read requirments, added function signtures for Header file Billable class abstract class with rule of 3 implemented
-2024/03/20  tested, debugged, ran
-2024/03/21  checked and done
+2026/04/03  Read requirments, added function signtures for Header file Order class, the attributes for Billable, Food, Drink
+2024/04/03  Added Food, Drink Dynamic arrays  to store the array of food/drink items from read file
+2024/04/03  Added Billable array of points which when a food/drink is added it stores in bill items array
+2024/04/03  Added function signtures  for printing bills, constructors to read the file values, listing/ ordering items  with Menu Class
+2024/04/06 tested, debugged, ran
+2024/03/06 checked and done
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my workshops and assignments.
