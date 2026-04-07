@@ -86,6 +86,12 @@ namespace seneca {
         
         ostr << ptr;
 
+        // if (m_menuNumber <0) {
+        //     ostr << ' ';
+        // }
+
+
+
         return ostr;
     }
 
@@ -153,7 +159,8 @@ namespace seneca {
 
             if (m_title) {
                 //if there 
-                m_title.display() <<endl;
+                m_title.display(); //<<endl;
+                cout << ' ' << endl; // try
             }
             //2. Display each Menu Item
             for (unsigned int i =0; i< m_numMenuItems; i++){
