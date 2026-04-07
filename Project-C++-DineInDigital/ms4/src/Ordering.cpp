@@ -15,7 +15,6 @@ that my professor provided to complete my workshops and assignments.
 -----------------------------------------------------------*/
 #include <iostream>
 #include <fstream>
-#include <iomanip>
 
 #include "Ordering.h"
 #include "Menu.h"
@@ -43,18 +42,12 @@ namespace seneca {
         os <<  "                     Total+Tax:"  <<  right << setw(9) << grandTot << endl;
 
         os << "========================================" << endl;
-
-
-        // os<< setw(25) << right << "Tax:" << setw(12) <<fixed << setprecision(2) << tax << '\n';
-        // os<< setw(35) << right << "Total+Tax:" << setw(12) <<fixed << setprecision(2) << grandTot << '\n';
-        // os << "========================================\n";
-
     }
 
 
 
     size_t Ordering::countRecords(const char* file) const {
-        size_t counter = 0;
+        size_t counter = 0; // set new line counter to 0
         ifstream fin(file); // open file
         char ch{};
         while (fin.get(ch)){
@@ -66,16 +59,6 @@ namespace seneca {
         } // end while
         return counter; // return the newline counter
     }
-
-//     size_t Ordering::countRecords(const char* file) const {
-//     size_t counter = 0;
-//     ifstream fin(file);
-//     string temp;
-//     while (getline(fin, temp)) {
-//         counter++;
-//     }
-//     return counter;
-// }
 
     Ordering::Ordering(const char* drinkFile, const char* foodFile) 
         : m_foodCount(0),
@@ -99,7 +82,7 @@ namespace seneca {
         }
 
         //3. Dynamic memory Allocation
-        m_drinkArr = new Drink[drinkRecs]; // Drink[3]
+        m_drinkArr = new Drink[drinkRecs]; // Drink[3] // holds size of 3 drinks
         m_foodArr = new Food [foodRecs];
 
 
@@ -108,22 +91,27 @@ namespace seneca {
         // while we still have space AND the read operation is successfull 
         while (dCount < drinkRecs && m_drinkArr[dCount].read(dfile)) {
             dCount++;
+            // reading each element from file
         }
 
         size_t fCount = 0;
         // while we still have space AND the read operation is successfull 
         while (fCount < foodRecs && m_foodArr[fCount].read(ffile)) {
             fCount++;
+            // reading each element from file
         }
 
+        // if number of read records does not match number of records in file
+            // revert operation, delete food, drink arrays, set to nulptr
         if (dCount != drinkRecs || fCount != foodRecs) {
             delete[] m_drinkArr;
             delete[] m_foodArr;
             m_drinkArr = nullptr;
             m_foodArr = nullptr;
         } else {
-            m_foodCount = fCount;
-            m_drinkCount = dCount;
+            //set the attributes  food count and drink count to the  num of records read
+            m_foodCount = fCount; // 8
+            m_drinkCount = dCount; // 3 
 
         }
     };
@@ -165,7 +153,6 @@ namespace seneca {
         cout << "List Of Avaiable Drinks\n";
         cout << "========================================\n";
         for (unsigned int i = 0;  i < m_drinkCount; i++ ){
-            // cout << "DEBUG: printing drink " << i << endl;
             m_drinkArr[i].print() << "\n";
         }
         cout << "========================================\n";
@@ -178,14 +165,17 @@ namespace seneca {
             m <<  (const char*) m_foodArr[i]; //(const char*)
         }
 
-        size_t sel = cout <<m;
+        size_t sel = cout <<m; // cals select()
 
         if (sel == 0 ) return;
+        // if selection is not 0
 
         if (m_billableCount < MaximumNumberOfBillItems) {
-            Food* f = new Food (m_foodArr[sel -1]);
+            // creates dynamic copy of selected food item 
+            Food* f = new Food (m_foodArr[sel -1]); 
             if ( f->order()) {
-                m_billItems[m_billableCount++] = f;
+                // assigns the select food item to next available element in Bill items increments by 1 the bill count
+                m_billItems[m_billableCount++] = f; 
             } else {
                 delete f;
             }
