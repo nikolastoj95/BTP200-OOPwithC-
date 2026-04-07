@@ -34,9 +34,9 @@ namespace seneca {
         unsigned int m_billableCount{};
         unsigned int m_billSeriNum{};
 
-        Food* m_foodArr{};
-        Drink* m_drinkArr{};
-        Billable* m_billItems[MaximumNumberOfBillItems]{};
+        Food* m_foodArr{}; // food pointer to store array of food items from data file
+        Drink* m_drinkArr{};// drink pointer to store array of drink items from data file
+        Billable* m_billItems[MaximumNumberOfBillItems]{}; // Billable Array of pointers
 
 
         void bill_Title_Print(std::ostream& os) const;
