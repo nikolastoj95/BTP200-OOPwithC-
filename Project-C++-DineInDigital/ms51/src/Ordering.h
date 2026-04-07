@@ -1,0 +1,70 @@
+/*Final Project Milestone 4: 
+Module: Ordering
+Filename: Ordering.h
+Version 1.0
+Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2026/04/03  Read requirments, added function signtures for Header file Order class, the attributes for Billable, Food, Drink
+2024/04/03  Added Food, Drink Dynamic arrays  to store the array of food/drink items from read file
+2024/04/03  Added Billable array of points which when a food/drink is added it stores in bill items array
+2024/04/03  Added function signtures  for printing bills, constructors to read the file values, listing/ ordering items  with Menu Class
+2024/04/06 tested, debugged, ran
+2024/03/06 checked and done
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code 
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
+#ifndef SENECA_ORDERING_H
+#define SENECA_ORDERING_H
+#include <iostream>
+#include "constants.h"
+#include "Food.h"
+#include "Drink.h"
+
+using namespace std;
+
+namespace seneca {
+
+    class Ordering {
+        //attributes
+        unsigned int m_foodCount{};
+        unsigned int m_drinkCount{};
+        unsigned int m_billableCount{};
+        unsigned int m_billSeriNum{};
+
+        Food* m_foodArr{}; // food pointer to store array of food items from data file
+        Drink* m_drinkArr{};// drink pointer to store array of drink items from data file
+        Billable* m_billItems[MaximumNumberOfBillItems]{}; // Billable Array of pointers
+
+
+        void bill_Title_Print(std::ostream& os) const;
+
+        void printTotals(std::ostream& os, double total ) const;
+
+        size_t countRecords(const char* file) const;
+    public:
+
+        Ordering(const char* drinkFile, const char* foodFile);
+        ~Ordering();
+        operator bool() const;
+
+        size_t noOfBillItems() const;
+
+        bool hasUnsavedBill() const;
+
+        void listFoods() const;
+
+        void listDrinks() const;
+
+        void orderFood();
+        void orderDrink();
+
+        void printBill(std::ostream& os) const;
+        void resetBill();
+    };
+
+
+}
+#endif
