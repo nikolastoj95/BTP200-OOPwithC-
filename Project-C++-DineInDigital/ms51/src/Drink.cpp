@@ -77,7 +77,9 @@ namespace seneca{
 
 
         int choice{};
-        cin >> choice;
+        // cin >> choice;
+         choice = ut.getInt(0,4);
+         
 
         switch (choice)
         {
