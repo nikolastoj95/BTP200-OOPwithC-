@@ -1,3 +1,22 @@
+/* 
+Final Project Milestone 51: 
+Module: Main
+Filename: Main.cpp
+Version 1.0
+Author: Nikola Stojanovic, StNo: 027 369 149, Email: nstojanovic@myseneca.ca
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2026/04/06  Include Modules need for main like Menu.h, Ordering.h, iostream, fstream
+2024/04/06  Created object for Ordering class to bring in two data files drink, food, so it can be listed 
+2024/04/07  Created a Menu Object to display Main Menu, and ordering menu, calling  ordering food, drinks too
+2024/04/07  Tested, Debuged, Cleaned Up, Ran
+2024/04/08  Checked and Done
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code 
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
+
 #include <iostream>
 #include <fstream>
 #include "Menu.h"
