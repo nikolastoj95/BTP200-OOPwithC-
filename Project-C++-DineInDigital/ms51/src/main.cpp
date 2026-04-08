@@ -26,71 +26,79 @@ int main() {
     if (!ord) {
         cout << "Failed to open data files or the data files are corrupted!" << endl;
         return 1;
-    }
+    };
 
-    do {
-        
+    do
+    {
+
         switch (selection = homeMenu.select())
         {
-
-        case 0:
-            if (ord.hasUnsavedBill()){
+        case 0: // Exit Program
+            if (ord.hasUnsavedBill())
+            {
                 confirm = exitConfrim.select();
-                if (confirm == 1) {
-                    cout << "Good Bye!" << endl;
-                    break;
-                    
-                }else {
-                    
-                    selection = 0; // force to continue
+                if (confirm == 1)
+                {                                // YES
+                    cout << "Good Bye!" << endl; // leaves
                 }
-               
-
-            } else {
-                // if no items in bill leave normally
+                else
+                { // selecting 0 or Not //to stay
+                    selection = 1;
+                }
+            }
+            else
+            {
                 cout << "Good Bye!" << endl;
+            }
 
             break;
-
-            }
-            
-        case 1:
-            // cout <<"Ordering...."<<endl;
-            orderSelection = orderMenu.select();
-            if ( orderSelection == 1) {
-                ord.orderFood();
-            } else if (orderSelection == 2) {
-                ord.orderDrink();
-            }
+        case 1: // Order
+            do
+            {
+                switch (orderSelection = orderMenu.select())
+                {
+                case 1:
+                    // food ordering
+                    ord.orderFood();
+                    break;
+                case 2:
+                    // drink ordering
+                    ord.orderDrink();
+                    break;
+                }
+            } while (orderSelection);
             break;
-        case 2:
-            // cout << "Printing Bill......"<< endl;
-            if (ord.noOfBillItems() >0) {
+        case 2://Print Bill to Console
+            if (ord.noOfBillItems() > 0)
+            {
                 ord.printBill(cout);
-            } else {
+            }
+            else
+            {
                 cout << "No Items in Bill!" << endl;
             }
             break;
-        case 3:
-            // cout <<"Start New Bill"<< endl;
-            if (ord.hasUnsavedBill()) {
+        case 3: // Start New Bill
+            if (ord.hasUnsavedBill())
+            {
                 ord.resetBill();
-            } else {
-                 cout << "No active bill to save!" << endl;
+            }
+            else
+            {
+                cout << "No active bill to save!" << endl;
             }
             break;
-        case 4: 
+        case 4: // List Foods
             ord.listFoods();
             break;
-        case 5:
+        case 5: // List Drinks
             ord.listDrinks();
             break;
-        default:
-        cout << "Should not happen!" <<endl;
+        default: // Never Should Reach Here Cause of Validation
+            cout << "Should not happen!" << endl;
             break;
         }
-    } while (selection);
-
+    } while (selection); // keeps looping if selection=1 stays
 
     return 0;
 }
