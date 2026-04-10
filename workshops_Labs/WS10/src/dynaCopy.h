@@ -62,24 +62,5 @@ namespace seneca{
             cout << arr[i]  << ((i < size -1 ) ? ", " : "\n");
         }
     }
-
-
-
-
-    /*
-     char* Utils::alocpy(char*& des, const char* src) const {
-      delete[] des; // Free any existing memory
-      des = nullptr;
-      if (src) {
-         des = new char[strlen(src) + 1]; // Allocate memory for copy
-         strcpy(des, src);                // Copy content
-      }
-      return des;
-   }*/
-
-
 }
-
-
-
 #endif
