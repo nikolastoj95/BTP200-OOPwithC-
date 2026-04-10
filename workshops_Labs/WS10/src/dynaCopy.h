@@ -41,7 +41,7 @@ namespace seneca{
     }
 
     template <typename T>
-    T* dynaCopy (T*& des, const T* src,  int size){  // T*&
+    T* dynaCopy (T*& des, const T* src,  int size){
         if (des != nullptr) {
             delete [] des; // free existing memory;
             des = nullptr;
